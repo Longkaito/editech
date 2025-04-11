@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Track - Đăng nhập</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome cho các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <h1>Future Track</h1>
+                <img src="./assets/hamter.png" alt="Hamster mascot" class="mascot">
+            </div>
+            
+            <h2>Chào mừng bạn trở lại 👋</h2>
+            <p class="subtitle">Hãy đăng nhập để tiếp tục khám phá tương lai của bạn</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="email" placeholder="Email hoặc tên người dùng" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Mật khẩu" required>
+                </div>
+
+                <button type="submit" class="login-btn">Đăng nhập</button>
+
+                <div class="divider">
+                    <span>hoặc</span>
+                </div>
+
+                <button type="button" class="social-btn google-btn">
+                    <i class="fab fa-google"></i>
+                    Đăng nhập với Google
+                </button>
+
+                <button type="button" class="social-btn facebook-btn">
+                    <i class="fab fa-facebook-f"></i>
+                    Đăng nhập với Facebook
+                </button>
+
+                <div class="bottom-links">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Ghi nhớ tôi</label>
+                    </div>
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                </div>
+
+                <p class="signup-link">
+                    Chưa có tài khoản? <a href="#">Đăng kí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

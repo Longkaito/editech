@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Track - Trang Chủ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2D6A4F;
+            --secondary-color: #40916C;
+            --light-color: #D8F3DC;
+            --feature-bg: #75AAB5;
+            --text-color: #333333;
+            --border-color: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-color);
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .top-section {
+            background: linear-gradient(135deg, #B8E0D2, #D8F3DC);
+            position: relative;
+            padding-bottom: 60px;
+            overflow: hidden;
+        }
+
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: var(--primary-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            padding: 40px 20px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-text {
+            color: var(--primary-color);
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .home-label {
+            position: absolute;
+            left: 70px;
+            bottom: -60px;
+            transform: rotate(-25deg);
+            font-size: 48px;
+            font-weight: bold;
+            color: #2D6A4F;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .hamster-image {
+            position: absolute;
+            right: 20px;
+            bottom: -40px;
+            width: 180px;
+            height: auto;
+            z-index: 2;
+        }
+
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 100% 100% 0 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background-color: var(--feature-bg);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-card.large {
+            grid-column: 1;
+            grid-row: 1 / span 1;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        .feature-icon {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 3rem;
+        }
+
+        .portfolio-icon {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 3rem;
+        }
+
+        .professor-hamster {
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+            width: 100px;
+            height: auto;
+        }
+
+        .search-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background-color: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar i {
+            font-size: 24px;
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .fake-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #555;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .fake-input::placeholder {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-section">
+        <button class="menu-button">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="logo-container">
+            <div class="logo-text">Future<br>Track</div>
+        </div>
+        
+        <div class="home-label">HOME</div>
+        <img src="./assets/hamter.png" alt="Hamster mascot" class="hamster-image">
+        <div class="wave-divider"></div>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card large">
+            <h3>Trò chuyện với chuyên gia</h3>
+            <div class="feature-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <h3>Mở phòng môi trường làm việc cậu muốn</h3>
+        </div>
+        
+        <div class="feature-card">
+            <h3>Lộ trình học tập dựa vào bài khảo sát</h3>
+        </div>
+        
+        <div class="feature-card">
+            <h3>Xây dựng PORTFOLIO của bạn</h3>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <div class="fake-input">Trò chuyện với HAMHAM</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Tạo container cho ảnh fullscreen
+            const fullscreenContainer = document.createElement('div');
+            fullscreenContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                z-index: 1000;
+                display: none;
+                justify-content: center;
+                align-items: center;
+            `;
+            document.body.appendChild(fullscreenContainer);
+            
+            // Dữ liệu ảnh cho từng feature card
+            const featureImages = [
+                './assets/8.png',     // Ảnh trò chuyện với chuyên gia
+                './assets/2.jpg',  // Ảnh môi trường làm việc VR/AR
+                './assets/4.png',   // Ảnh lộ trình học tập
+                './assets/8.png'        // Ảnh xây dựng portfolio
+            ];
+            
+            // Hàm hiển thị ảnh fullscreen - ĐỊNH NGHĨA TRƯỚC KHI SỬ DỤNG
+            function showFullscreenImage(index) {
+                // Xóa nội dung hiện tại
+                fullscreenContainer.innerHTML = '';
+                
+                // Tạo nút back
+                const backButton = document.createElement('button');
+                backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                backButton.style.cssText = `
+                    position: absolute;
+                    top: 20px;
+                    left: 20px;
+                    background-color: rgba(255, 255, 255, 0.2);
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    font-size: 24px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1001;
+                `;
+                backButton.addEventListener('click', hideFullscreenImage);
+                fullscreenContainer.appendChild(backButton);
+                
+                // Tạo và thêm ảnh
+                const img = document.createElement('img');
+                img.src = featureImages[index];
+                img.alt = 'Fullscreen Image';
+                img.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                `;
+                
+                // Xử lý trường hợp ảnh không tồn tại
+                img.onerror = function() {
+                    // Hiển thị placeholder nếu ảnh không tồn tại
+                    const placeholder = document.createElement('div');
+                    placeholder.style.cssText = `
+                        width: 80%;
+                        height: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #40916C;
+                        border-radius: 20px;
+                        color: white;
+                        text-align: center;
+                        padding: 40px;
+                    `;
+                    
+                    // Xác định nội dung dựa trên index
+                    let title, icon;
+                    switch(index) {
+                        case 0:
+                            title = "Trò chuyện với chuyên gia";
+                            icon = "fa-comments";
+                            break;
+                        case 1:
+                            title = "Môi trường làm việc VR/AR";
+                            icon = "fa-vr-cardboard";
+                            break;
+                        case 2:
+                            title = "Lộ trình học tập";
+                            icon = "fa-user-graduate";
+                            break;
+                        case 3:
+                            title = "Xây dựng Portfolio";
+                            icon = "fa-file-alt";
+                            break;
+                    }
+                    
+                    placeholder.innerHTML = `
+                        <i class="fas ${icon}" style="font-size: 80px; margin-bottom: 20px;"></i>
+                        <h2 style="font-size: 32px; margin-bottom: 20px;">${title}</h2>
+                        <p style="font-size: 18px;">Tính năng đang được phát triển</p>
+                    `;
+                    
+                    fullscreenContainer.appendChild(placeholder);
+                };
+                
+                fullscreenContainer.appendChild(img);
+                
+                // Hiển thị container
+                fullscreenContainer.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Ngăn cuộn trang
+            }
+            
+            // Hàm ẩn ảnh fullscreen
+            function hideFullscreenImage() {
+                fullscreenContainer.style.display = 'none';
+                document.body.style.overflow = ''; // Cho phép cuộn trang trở lại
+            }
+            
+            // Lấy tất cả các feature card
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            // Thêm sự kiện click cho mỗi card (SAU KHI ĐÃ ĐỊNH NGHĨA CÁC HÀM TRÊN)
+            for (let i = 0; i < featureCards.length; i++) {
+                featureCards[i].style.cursor = 'pointer';
+                featureCards[i].onclick = function() {
+                    showFullscreenImage(i);
+                };
+            }
+            
+            // Thêm sự kiện bấm ESC để đóng ảnh
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && fullscreenContainer.style.display === 'flex') {
+                    hideFullscreenImage();
+                }
+            });
+
+            // Xử lý sự kiện click vào fake-input
+            const fakeInput = document.querySelector('.fake-input');
+            if (fakeInput) {
+                console.log('Found fake input');
+                fakeInput.addEventListener('click', function() {
+                    console.log('Fake input clicked');
+                    
+                    // Hiển thị ảnh HAMHAM chatbot full màn hình
+                    showHamhamImage();
+                });
+            }
+            
+            // Hàm hiển thị ảnh HAMHAM
+            function showHamhamImage() {
+                console.log('Showing HAMHAM image');
+                
+                // Xóa nội dung hiện tại của fullscreenContainer
+                fullscreenContainer.innerHTML = '';
+                
+                // Tạo nút back
+                const backButton = document.createElement('button');
+                backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                backButton.style.cssText = `
+                    position: absolute;
+                    top: 20px;
+                    left: 20px;
+                    background-color: rgba(255, 255, 255, 0.2);
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    font-size: 24px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1001;
+                `;
+                backButton.addEventListener('click', hideFullscreenImage);
+                fullscreenContainer.appendChild(backButton);
+                
+                // Tạo và thêm ảnh HAMHAM
+                const img = document.createElement('img');
+                img.src = './assets/1.jpg'; // Đường dẫn đến ảnh HAMHAM
+                img.alt = 'HAMHAM Assistant';
+                img.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                `;
+                
+                // Xử lý trường hợp ảnh không tồn tại
+                img.onerror = function() {
+                    console.log('Image not found, showing placeholder');
+                    // Hiển thị placeholder nếu ảnh không tồn tại
+                    const placeholder = document.createElement('div');
+                    placeholder.style.cssText = `
+                        width: 80%;
+                        height: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #40916C;
+                        border-radius: 20px;
+                        color: white;
+                        text-align: center;
+                        padding: 40px;
+                    `;
+                    
+                    placeholder.innerHTML = `
+                        <i class="fas fa-robot" style="font-size: 80px; margin-bottom: 20px;"></i>
+                        <h2 style="font-size: 32px; margin-bottom: 20px;">HAMHAM Assistant</h2>
+                        <p style="font-size: 18px;">Trò chuyện với trợ lý thông minh của Future Track</p>
+                        <p style="font-size: 18px; margin-top: 20px;">Tính năng đang được phát triển</p>
+                    `;
+                    
+                    fullscreenContainer.appendChild(placeholder);
+                };
+                
+                fullscreenContainer.appendChild(img);
+                
+                // Hiển thị container
+                fullscreenContainer.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Ngăn cuộn trang
+            }
+        });
+    </script>
+</body>
+</html> 
