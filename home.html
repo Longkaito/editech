@@ -25,8 +25,18 @@
         body {
             background-color: #ffffff;
             color: var(--text-color);
-            max-width: 100%;
+            max-width: 512px;
+            margin: 0 auto;
             overflow-x: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            min-height: 100vh;
+        }
+
+        html {
+            display: flex;
+            justify-content: center;
+            background-color: #f5f5f5;
         }
 
         .top-section {
@@ -150,12 +160,14 @@
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
+            max-width: 460px;
             background-color: white;
             border-radius: 30px;
             display: flex;
             align-items: center;
             padding: 10px 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
         }
 
         .search-bar i {
@@ -178,6 +190,10 @@
         .fake-input::placeholder {
             color: #999;
         }
+
+        .fullscreen-image {
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -190,7 +206,7 @@
             <div class="logo-text">Future<br>Track</div>
         </div>
         
-        <div class="home-label">HOME</div>
+        
         <img src="./assets/hamter.png" alt="Hamster mascot" class="hamster-image">
         <div class="wave-divider"></div>
     </div>
@@ -245,7 +261,7 @@
                 './assets/8.png',     // Ảnh trò chuyện với chuyên gia
                 './assets/2.jpg',  // Ảnh môi trường làm việc VR/AR
                 './assets/4.png',   // Ảnh lộ trình học tập
-                './assets/8.png'        // Ảnh xây dựng portfolio
+                './assets/18.png'        // Ảnh xây dựng portfolio
             ];
             
             // Hàm hiển thị ảnh fullscreen - ĐỊNH NGHĨA TRƯỚC KHI SỬ DỤNG
@@ -286,53 +302,76 @@
                     object-fit: contain;
                 `;
                 
-                // Xử lý trường hợp ảnh không tồn tại
-                img.onerror = function() {
-                    // Hiển thị placeholder nếu ảnh không tồn tại
-                    const placeholder = document.createElement('div');
-                    placeholder.style.cssText = `
-                        width: 80%;
-                        height: 80%;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: #40916C;
-                        border-radius: 20px;
-                        color: white;
-                        text-align: center;
-                        padding: 40px;
-                    `;
+                // Dành cho ảnh đầu tiên (4.png)
+                img.addEventListener('click', function() {
+                    console.log('Switching to image 17.png');
                     
-                    // Xác định nội dung dựa trên index
-                    let title, icon;
-                    switch(index) {
-                        case 0:
-                            title = "Trò chuyện với chuyên gia";
-                            icon = "fa-comments";
-                            break;
-                        case 1:
-                            title = "Môi trường làm việc VR/AR";
-                            icon = "fa-vr-cardboard";
-                            break;
-                        case 2:
-                            title = "Lộ trình học tập";
-                            icon = "fa-user-graduate";
-                            break;
-                        case 3:
-                            title = "Xây dựng Portfolio";
-                            icon = "fa-file-alt";
-                            break;
-                    }
+                    // Tạo hiệu ứng transition
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.3s';
                     
-                    placeholder.innerHTML = `
-                        <i class="fas ${icon}" style="font-size: 80px; margin-bottom: 20px;"></i>
-                        <h2 style="font-size: 32px; margin-bottom: 20px;">${title}</h2>
-                        <p style="font-size: 18px;">Tính năng đang được phát triển</p>
-                    `;
-                    
-                    fullscreenContainer.appendChild(placeholder);
-                };
+                    // Sau khi transition kết thúc, đổi sang ảnh mới
+                    setTimeout(() => {
+                        // Thay đổi src của ảnh
+                        img.src = './assets/17.png';
+                        
+                        // Khi ảnh mới được tải, hiển thị lại
+                        img.onload = function() {
+                            img.style.opacity = '1';
+                            
+                            // Xóa event listener cũ
+                            img.removeEventListener('click', arguments.callee);
+                            
+                            // Thêm event listener mới cho ảnh 17.png
+                            img.addEventListener('click', function() {
+                                console.log('Opening Google Form in a new tab');
+                                
+                                // Mở Google Form trong tab mới
+                                window.open('https://docs.google.com/forms/d/e/1FAIpQLSd9uY0qYLirWbh5KMqt1An1jeYEiDXiYwifV8x7GQTcTmy9pg/viewform?usp=header', '_blank');
+                            });
+                            
+                            // Thêm hint để người dùng biết ảnh có thể click được
+                            img.style.cursor = 'pointer';
+                            img.title = 'Click để mở Form Khảo sát tính cách';
+                        };
+                        
+                        // Xử lý trường hợp ảnh mới không tồn tại
+                        img.onerror = function() {
+                            console.log('Image 17.png not found');
+                            
+                            // Hiển thị placeholder nếu ảnh không tồn tại
+                            const placeholder = document.createElement('div');
+                            placeholder.style.cssText = `
+                                width: 80%;
+                                height: 80%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                background-color: #40916C;
+                                border-radius: 20px;
+                                color: white;
+                                text-align: center;
+                                padding: 40px;
+                            `;
+                            
+                            placeholder.innerHTML = `
+                                <i class="fas fa-clipboard-list" style="font-size: 80px; margin-bottom: 20px;"></i>
+                                <h2 style="font-size: 32px; margin-bottom: 20px;">Khảo sát tính cách</h2>
+                                <p style="font-size: 18px;">Click để làm bài khảo sát và nhận lộ trình học tập phù hợp</p>
+                            `;
+                            
+                            // Thêm cursor pointer và event listener cho placeholder
+                            placeholder.style.cursor = 'pointer';
+                            placeholder.addEventListener('click', function() {
+                                window.open('https://docs.google.com/forms/d/e/1FAIpQLSd9uY0qYLirWbh5KMqt1An1jeYEiDXiYwifV8x7GQTcTmy9pg/viewform?usp=header', '_blank');
+                            });
+                            
+                            // Thay thế ảnh bằng placeholder
+                            fullscreenContainer.replaceChild(placeholder, img);
+                        };
+                    }, 300);
+                });
                 
                 fullscreenContainer.appendChild(img);
                 
@@ -417,34 +456,13 @@
                     object-fit: contain;
                 `;
                 
-                // Xử lý trường hợp ảnh không tồn tại
-                img.onerror = function() {
-                    console.log('Image not found, showing placeholder');
-                    // Hiển thị placeholder nếu ảnh không tồn tại
-                    const placeholder = document.createElement('div');
-                    placeholder.style.cssText = `
-                        width: 80%;
-                        height: 80%;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: #40916C;
-                        border-radius: 20px;
-                        color: white;
-                        text-align: center;
-                        padding: 40px;
-                    `;
+                // Thêm sự kiện click cho ảnh để chuyển sang ảnh khác
+                img.addEventListener('click', function() {
+                    console.log('Opening Google Form in a new tab');
                     
-                    placeholder.innerHTML = `
-                        <i class="fas fa-robot" style="font-size: 80px; margin-bottom: 20px;"></i>
-                        <h2 style="font-size: 32px; margin-bottom: 20px;">HAMHAM Assistant</h2>
-                        <p style="font-size: 18px;">Trò chuyện với trợ lý thông minh của Future Track</p>
-                        <p style="font-size: 18px; margin-top: 20px;">Tính năng đang được phát triển</p>
-                    `;
-                    
-                    fullscreenContainer.appendChild(placeholder);
-                };
+                    // Mở Google Form trong tab mới
+                    window.open('https://docs.google.com/forms/d/e/1FAIpQLSd9uY0qYLirWbh5KMqt1An1jeYEiDXiYwifV8x7GQTcTmy9pg/viewform?usp=header', '_blank');
+                });
                 
                 fullscreenContainer.appendChild(img);
                 
